@@ -12,7 +12,13 @@ console.log(data2) */
 
 // fs.appendFileSync("usuario.json", ' Asi agrega appendFileSync')
 
-fs.writeFileSync("usuario2.json",
-    JSON.stringify({ usuario: "Maria" }), "utf-8")
+// fs.writeFileSync("usuario.json",
+//     JSON.stringify({ usuario: "Maria" }), "utf-8")
 
-// fs.unlinkSync("usuario2.json")
+try {
+    // fs.unlinkSync("usuario2.json")
+    const data = fs.readFileSync("usuario.json", "utf-8")
+    console.log(data)
+} catch (err) {
+    console.log('Archivo no existe')
+}

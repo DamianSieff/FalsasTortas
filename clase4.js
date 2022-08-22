@@ -15,7 +15,7 @@ const mostrarLetras = (string, fun) => {
 
 mostrarLetras(palabra, fin) */
 
-function mostrarLetras(palabra,cb){
+/* function mostrarLetras(palabra,cb){
     let i = 0
     const timer = setInterval(() => {
         if(palabra.length > i){
@@ -32,12 +32,12 @@ const fin = () => console.log('terminé')
 
 setTimeout(() => {mostrarLetras('hola',fin)}, 0);
 setTimeout(() => {mostrarLetras('hola',fin)}, 250);
-setTimeout(() => {mostrarLetras('hola',fin)}, 500);
+setTimeout(() => {mostrarLetras('hola',fin)}, 500); */
 
 
 /////////////////////////////////////////////////
 
-/* const menu = {
+const menu = {
     hamburguesa: 2,
     milanesa: 3,
     tiramisu: 2,
@@ -81,5 +81,22 @@ function habilitarMostrador(num) {
     }, 5000);
 }
 
-habilitarMostrador(1)
-habilitarMostrador(2) */
+// habilitarMostrador(1)
+// habilitarMostrador(2)
+
+async function start() {
+    setInterval(async () => {
+        const pedir = productos[Math.floor(Math.random() * productos.length)]
+        try {
+            const data = await crearPedido(pedir)
+            console.log(`[EQUIVALENTE THEN]`, data)
+        } catch (error) {
+            console.log(`[EQUIVALENTE CATCH]`, error)
+        }
+        console.log(`[EQUIVALENTE FINALLY] Orden finalizada`)
+        console.log('Menu restante:')
+        console.table(menu)
+    }, 2000)
+}
+
+start()
