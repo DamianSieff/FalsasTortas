@@ -1,0 +1,23 @@
+{
+  "name": "falsastortas",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamianSieff/FalsasTortas.git"
+  },
+  "author": "Damian Sieff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamianSieff/FalsasTortas/issues"
+  },
+  "homepage": "https://github.com/DamianSieff/FalsasTortas#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "moment": "^2.29.4"
+  },
+  "description": ""
+}
