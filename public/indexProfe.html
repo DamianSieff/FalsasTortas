@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularios</title>
+</head>
+
+<body>
+
+    <!--  <h2>Ingrese Persona</h2>
+    <form action="/personas" method="POST">
+        Nombre: <input type="text" name="name" />
+        Apellido: <input type="text" name="apellido" />
+        Edad: <input type="text" name="edad" />
+        <button>Enviar</button>
+    </form>
+
+    <h2>Ingrese Mascota</h2>
+    <form action="/mascotas" method="POST">
+        Nombre: <input type="text" name="name" />
+        Raza: <input type="text" name="raza" />
+        Edad: <input type="text" name="edad" />
+        <button>Enviar</button>
+    </form>
+
+    <h2>Ingrese Persona</h2>
+    <form action="/profile" method="post" enctype="multipart/form-data">
+        <input type="file" name="avatar" />
+    </form> -->
+
+
+
+    <div></div>
+
+
+    <!-- cdn Handlebare -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+    <script>
+
+        //View
+        const view = "<ul><li>{{nombre}}</li><li>{{apellido}}</li><li>{{edad}}</li><li>{{email}}</li></li><li>{{telefono}}</li></ul>"
+
+        //Model
+        const model = {
+            nombre: 'Marcelo',
+            apellido: 'Gomez',
+            edad: 39,
+            email: 'mdg...@gmail.com',
+            telefono: 1123234343
+        }
+
+        //Controller
+        const controller = Handlebars.compile(view)
+        const html = controller(model)
+
+        document.querySelector('div').innerHTML = html
+
+    </script>
+
+</body>
+
+</html>

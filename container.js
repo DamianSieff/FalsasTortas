@@ -7,7 +7,6 @@ module.exports = class Contenedor {
 
     async save(producto) {
         try {
-
             const data = await fs.promises.readFile(this.archivo, "utf-8")
             const objetos = JSON.parse(data)
 
@@ -18,31 +17,40 @@ module.exports = class Contenedor {
             const productosString = JSON.stringify(objetos)
             await fs.promises.writeFile(this.archivo, productosString)
             console.log("Se guardo el producto")
-            console.log(objetos)
         }
         catch (err) {
             console.log("No se pudo guardar el producto")
         }
-
-
     }
+
     async getById(id) {
         const data = await fs.promises.readFile(this.archivo, "utf-8")
         const objetos = JSON.parse(data)
         const objeto = objetos.find((objeto) => objeto.id == id)
         if (objeto) {
-            console.log(objeto)
+            return objeto
         } else {
             console.log("Producto no encontrado!")
         }
-
     }
+
+    async putById(id) {
+        const data = await fs.promises.readFile(this.archivo, "utf-8")
+        const objetos = JSON.parse(data)
+        const objeto = objetos.find((objeto) => objeto.id == id)
+        if (objeto) {
+            return objeto
+        } else {
+            console.log("Producto no encontrado!")
+        }
+    }
+
     getAll() {
         try {
             const data = fs.readFileSync(this.archivo, "utf-8")
             const objetos = JSON.parse(data)
-            console.log(objetos)
             return objetos
+            console.log(objetos)
         } catch (err) {
             console.log("Archivo inexistente")
             console.log(err)
@@ -51,17 +59,19 @@ module.exports = class Contenedor {
     }
 
     async deleteById(id) {
-        try {
+        const data = await fs.promises.readFile(this.archivo, "utf-8")
+        const parse = JSON.parse(data)
 
-            const data = await fs.promises.readFile(this.archivo, "utf-8")
-            const parse = JSON.parse(data)
+        const filtro = parse.filter(objeto => objeto.id != id)
 
-            const filtro = parse.filter((objeto) => objeto.id !== id)
+        if (parse.length == filtro.length) {
+            return { error: 'Producto no encontrado' }
+        } else {
             const string = JSON.stringify(filtro)
-            fs.promises.writeFile(this.archivo, string)
-            console.log(filtro)
-        } catch (err) {
-            console.log("No se encontro ID")
+            await fs.promises.writeFile(this.archivo, string)
+
+            console.log("Se eliminó el producto")
+            return string
         }
     }
 
